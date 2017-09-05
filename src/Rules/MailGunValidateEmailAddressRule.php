@@ -6,7 +6,7 @@ use GuzzleHttp\ClientInterface;
 use Illuminate\Contracts\Validation\Rule;
 use juniorb2ss\LaravelExtendedValidationRules\Exceptions\NotFoundMailgunPubKeyException;
 
-class ValidateEmailAddressRule implements Rule
+class MailGunValidateEmailAddressRule implements Rule
 {
 
     /**

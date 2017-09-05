@@ -1,4 +1,18 @@
-# Hello World Package
-[![Build Status](https://travis-ci.org/juniorb2ss/laravel-hello-world-package.svg?branch=master)](https://travis-ci.org/juniorb2ss/laravel-hello-world-package) [![Code Coverage](https://scrutinizer-ci.com/g/juniorb2ss/laravel-hello-world-package/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/juniorb2ss/laravel-hello-world-package/?branch=master) [![Laravel](https://img.shields.io/badge/Laravel-5.*-green.svg)](https://laravel.com) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/juniorb2ss/laravel-hello-world-package/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/juniorb2ss/laravel-hello-world-package/?branch=master) [![StyleCI](https://styleci.io/repos/84957945/shield?branch=master)](https://styleci.io/repos/84957945) [![Code Climate](https://codeclimate.com/github/juniorb2ss/laravel-hello-world-package/badges/gpa.svg)](https://codeclimate.com/github/juniorb2ss/laravel-hello-world-package) 
+# Laravel 5.5 Rules Extends
 
-Example of package structure in Laravel Application
+## Validate Email With Mailgun Service
+```php
+    use juniorb2ss\LaravelExtendedValidationRules\Rules\MailGunValidateEmailAddressRule;
+
+    return Validator::make($inputs, [
+        'name' => 'required|string|max:255',
+        'email' => [
+            'required',
+            'string',
+            'max:255',
+            'unique:users',
+            new MailGunValidateEmailAddressRule // to make validation in mailgun service
+        ]
+    ]);
+
+```

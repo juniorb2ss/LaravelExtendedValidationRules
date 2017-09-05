@@ -2,7 +2,7 @@
 namespace juniorb2ss\LaravelExtendedValidationRules\Tests;
 
 use juniorb2ss\LaravelExtendedValidationRules\Tests\TestCase;
-use juniorb2ss\LaravelExtendedValidationRules\Rules\ValidateEmailAddressRule;
+use juniorb2ss\LaravelExtendedValidationRules\Rules\MailGunValidateEmailAddressRule;
 
 class ValidateEmailAddressRuleTest extends TestCase
 {
@@ -11,7 +11,7 @@ class ValidateEmailAddressRuleTest extends TestCase
      */
     public function testOnlyPaidAccounts()
     {
-        $validator = new ValidateEmailAddressRule(
+        $validator = new MailGunValidateEmailAddressRule(
             [
                 'pubkey' => 'something'
             ],
@@ -28,7 +28,7 @@ class ValidateEmailAddressRuleTest extends TestCase
      */
     public function testNotFoundPubKey()
     {
-        $validator = new ValidateEmailAddressRule(
+        $validator = new MailGunValidateEmailAddressRule(
             [],
             $this->clientMock($this->getStubContent('onlyPaidAccounts.json'), function ($response) {
                 return $response->withStatus(403);
@@ -40,7 +40,7 @@ class ValidateEmailAddressRuleTest extends TestCase
 
     public function testInvalidEmail()
     {
-        $validator = new ValidateEmailAddressRule(
+        $validator = new MailGunValidateEmailAddressRule(
             [
                 'pubkey' => 'something'
             ],
@@ -55,7 +55,7 @@ class ValidateEmailAddressRuleTest extends TestCase
 
     public function testValidEmail()
     {
-        $validator = new ValidateEmailAddressRule(
+        $validator = new MailGunValidateEmailAddressRule(
             [
                 'pubkey' => 'something'
             ],
@@ -69,7 +69,7 @@ class ValidateEmailAddressRuleTest extends TestCase
 
     public function testDidYouMeanEmail()
     {
-        $validator = new ValidateEmailAddressRule(
+        $validator = new MailGunValidateEmailAddressRule(
             [
                 'pubkey' => 'something'
             ],
