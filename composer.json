@@ -1,5 +1,5 @@
 {
-    "name": "juniorb2ss/LaravelExtendedValidationRules",
+    "name": "juniorb2ss/laravel-extended-validation-rules",
     "type": "package",
     "description": "Rules to make easy validations in laravel 5.5.",
     "keywords": [
